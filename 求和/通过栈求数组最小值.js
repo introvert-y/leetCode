@@ -99,3 +99,33 @@ MinStack.prototype.getMin = function () {
 // };
 
 // 方法四：链表实现
+// function Node(x = null, min = Infinity) {
+//   this.value = x;
+//   this.min = min;
+//   this.next = null;
+// }
+// function MinStack() {
+//   this.header = new Node();
+// }
+// MinStack.prototype.push = function (element) {
+//   const n =
+//     null === this.header.next
+//       ? new Node(element, element)
+//       : new Node(element, Math.min(element, this.header.min));
+//   n.next = this.header;
+//   this.header = n;
+//   return n;
+// };
+// MinStack.prototype.pop = function () {
+//   if (this.header.next === null) {
+//     return false;
+//   }
+//   this.header = this.header.next;
+//   return this.header;
+// };
+// MinStack.prototype.top = function () {
+//   return this.header.next === null ? false : this.header.value;
+// };
+// MinStack.prototype.getMin = function () {
+//   return this.header.min;
+// };
