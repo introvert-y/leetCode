@@ -36,45 +36,67 @@
 // };
 
 // 方法二
-// var topKFrequent = function(nums, k) {
-//   const length = nums.length;
-//   if (!length) {
-//     return [];
-//   }
-//   const obj = new Map();
-//   const list = [];
-//   for(let i = 0; i < length; i++) {
-//     if (!obj.has(nums[i])) {
-//       obj.set(nums[i], {
-//         val: 0,
-//         mark: false,
-//       })
-//     } else {
-//       const { val, mark } = obj.get(nums[i]);
-//       if(!mark) {
-//         obj.set(nums[i], {
-//           val: val + 1,
-//           mark: val + 1 >= k ? true : false,
-//         })
-//         if (obj.get(nums[i]).mark) {
-//           list.push(nums[i]);
-//         }
-//       }
-//     }
-//   }
-//   return list;
-// };
+var topKFrequent = function(nums, k) {
+  const length = nums.length;
+  if (!length) {
+    return [];
+  }
+  const obj = new Map();
+  const list = [];
+  const res = [];
+  for(let i = 0; i < length; i++) {
+    if (!obj.has(nums[i])) {
+      obj.set(nums[i], 0)
+    } else {
+      obj.set(nums[i], obj.get(nums[i]) + 1);
+    }
+  }
+  const mapLength = obj.size();
+  for (let [key, value] of obj) {
+    list.push(key);
+  }
+  const listLength = list.length;
+  for (let i = 0; i < listLength; i++) {
+    for(let j = i + 1; j < listLength; j++) {
+      if (obj.get(i) > obj.get(j)) {
+        [list[i], list[j]] = [list[j], list[i]];
+      }
+    }
+    if(k === i) {
+      return list.slice(0, k).reverse().map(item => obj.get(item));
+    }
+  }
+};
 
-// for (Integer key : map.keySet()) {
-//   if (pq.size() < k) {
-//       pq.add(key);
-//   } else if (map.get(key) > map.get(pq.peek())) {
-//       pq.remove();
-//       pq.add(key);
-//   }
-// }
-// // 取出最小堆中的元素
-// List<Integer> res = new ArrayList<>();
-// while (!pq.isEmpty()) {
-//   res.add(pq.remove());
-// }
+
+var topKFrequent = function(nums, k) {
+  const length = nums.length;
+  if (!length) {
+    return [];
+  }
+  const obj = {};
+  for(let i = 0; i < length; i++) {
+    if (!obj[nums[i]]) {
+      obj[nums[i]] = 1;
+    } else {
+      obj[nums[i]] += 1;
+    }
+  }
+  const list = Object.keys(obj);
+  const len = list.length;
+  const res = [];
+  if (list.lenth === k) {
+    return list;
+  }
+  for (let i = 0; i < len; i++) {
+    for(let j = i + 1; j < len; j++) {
+      if (obj[i] < obj[j]) {
+        [list[j], list[i]] = [list[i], list[j]];
+      }
+    }
+    res.push(list[i]);
+    if(res.length === k) {
+      return res;
+    }
+  }
+};
