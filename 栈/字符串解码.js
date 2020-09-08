@@ -44,12 +44,10 @@ function dfs(s, i) {
   let number = 0;
   while (i < s.length) {
     const item = s[i];
-    console.log('item', item);
     const numberItem = item - 0;
     switch(true) {
       case numberItem >= 0 || numberItem <= 9 : {
         number = number * 10 + numberItem;
-        console.log('number', number);
         i += 1;
         break;
       }
@@ -57,7 +55,7 @@ function dfs(s, i) {
         const { str, tmp } = dfs(s, i + 1);
         res += tmp.repeat(number);
         number = 0;
-        i = str;
+        i = str + 1;
         break;
       }
       case ']' === item: {
@@ -68,7 +66,6 @@ function dfs(s, i) {
       }
       default: {
         res += item;
-        console.log('res', res);
         i += 1;
       };
     }
@@ -81,4 +78,3 @@ var decodeString = function(s) {
   }  
   return dfs(s, 0);
 };
-
