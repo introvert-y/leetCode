@@ -1,2 +1,2 @@
 # leetCode
-js实现leetcode, 共勉
+js实现leetcode, 共勉 respect
