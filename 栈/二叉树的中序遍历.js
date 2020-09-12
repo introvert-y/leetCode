@@ -1,4 +1,4 @@
-// 给定一个二叉树，返回它的中序 遍历。
+// 给定一个二叉树，返回它的中序遍历。 左中右
 // https://leetcode-cn.com/problems/binary-tree-inorder-traversal/
 
 /**
@@ -32,27 +32,3 @@
 // var inorderTraversal = function(root) {
 //   return recursive(root);
 // };
-
-// 方法二： 颜色标记法
-
-var inorderTraversal = function(root) {
-  const WHITE = 0;
-  const GRAY = 1;
-  const list = [[WHITE, root]];
-  const res = [];
-  while(list.length) {
-    const [color, node] = list.pop();
-    if (node) {      
-      if (color == WHITE) {
-        list.push([WHITE, node.right])
-        list.push([GRAY, node])
-        list.push([WHITE, node.left])
-      }
-      else {
-        res.push(node.val);
-      }
-    }
-  }
-  return res;
-};
-
