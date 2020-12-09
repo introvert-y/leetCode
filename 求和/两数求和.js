@@ -8,17 +8,17 @@
 */
 
 // 方法一 暴力求解
-var twoSum = function (nums, target) {
-  for (let i = 0; i <= nums.length - 1; i++) {
-    const item = nums[i];
-    for (let j = i + 1; j <= nums.length - 1; j++) {
-      if (target - nums[j] === nums[i]) {
-        return [i, j];
-      }
-    }
-  }
-  return [];
-};
+// var twoSum = function (nums, target) {
+//   for (let i = 0; i <= nums.length - 1; i++) {
+//     const item = nums[i];
+//     for (let j = i + 1; j <= nums.length - 1; j++) {
+//       if (target - nums[j] === nums[i]) {
+//         return [i, j];
+//       }
+//     }
+//   }
+//   return [];
+// };
 
 // 方法二 两遍哈希表
 // var twoSum = function(nums, target) {
@@ -36,16 +36,16 @@ var twoSum = function (nums, target) {
 //   return [];
 // };
 
-// 方法三 两遍哈希表
-// var twoSum = function(nums, target) {
-//   const hashMap = new Map();
-//   for(let i = 0; i <= nums.length - 1; i++) {
-//       const item = target - nums[i];
-//       if(hashMap.has(nums[i])) {
-//           return [hashMap.get(nums[i]), i];
-//       }
-//       hashMap.set(item, i);
-//   }
-//   return [];
-// };
+// 方法三 一遍哈希表
+var twoSum = function(nums, target) {
+  const hashMap = new Map();
+  for(let i = 0; i <= nums.length - 1; i++) {
+      if(hashMap.has(nums[i])) {
+          return [hashMap.get(nums[i]), i];
+      }
+      const item = target - nums[i];
+      hashMap.set(item, i);
+  }
+  return [];
+};
 console.log(twoSum([2, 7, 11, 15], 9));
