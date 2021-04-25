@@ -8,41 +8,15 @@
 // 链接：https://leetcode-cn.com/problems/daily-temperatures
 // 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
-/**
- * @param {number[]} T
- * @return {number[]}
- */
 
-// 暴力求解
-// var dailyTemperatures = function(T) {
-//   const len = T.length;
-//   if (!len) {
-//     return [];
-//   }
-//   const list = [];
-//   for (let i = 0; i < len; i++) {
-//     let max = i;
-//     for (let j = i + 1; j < len; j++) {
-//       if (T[i] < T[j]) {
-//         max = j;
-//         list.push(max - i);
-//         break;
-//       }
-//     }
-//     if (i === max) {
-//       list.push(0);
-//     }
-//   }
-//   return list;
-// };
-
-// 方法二：单调栈 优
+// 单调栈 优
 var dailyTemperatures = function(T) {
   const len = T.length;
   if (!len) {
     return [];
   }
-  const list = Array(len).fill(0);
+  // 
+  const list = Array(len).fill(0); // es6语法，创造数组空位，并填充
   const stack = [];
   for (let i = 0; i < len; i++) {
     const temperature = T[i];

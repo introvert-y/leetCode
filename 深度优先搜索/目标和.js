@@ -23,6 +23,7 @@ function calculate(nums = [], i, sum, S) {
  * @return {number}
  */
 var findTargetSumWays = function(nums, S) {
+  count = 0;
   calculate(nums, 0, 0, S);
   return count;
 };

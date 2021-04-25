@@ -32,25 +32,22 @@
 //   return res;
 // };
 
-[3]
-
-
-var trap = function(height) {
-  const stack = [];
-  let res = 0;
-  for(let i = 0; i < height.length; i++) {
-    while (!stack.length && height[i] > height[stack[stack.length -1]]) {
-      const item = stack.pop();
-      if (!stack.length) {
-        break;
+  var trap = function(height) {
+    const stack = [];
+    let res = 0;
+    for(let i = 0; i < height.length; i++) {
+      while (stack.length && height[i] > height[stack[stack.length -1]]) {
+        const item = stack.pop();
+        const stackLeng = stack.length;
+        if (!stackLeng) {
+          break;
+        }
+        const width = i - stack[stackLeng -1] - 1;
+        const height_border = Math.min(height[i], height[stack[stackLeng -1]]) - height[item];
+        res += width * height_border;
       }
-      const width = i - stack[stack.length -1] - 1;
-      const height_border = Math.min(height[i], height[stack[stack.length -1]]) - height[item];
-      console.log('width', width, height_border);
-      res += width * height_border;
+      stack.push(i);
     }
-    stack.push(i);
+    return res;
   }
-  return res;
-}
 trap([0,1,0,2,1,0,1,3,2,1,2,1]);

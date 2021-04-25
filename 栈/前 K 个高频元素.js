@@ -1,5 +1,9 @@
-// 347. 前 K 个高频元素
-// 给定一个非空的整数数组，返回其中出现频率前 k 高的元素。
+
+/**
+ * 347. 前 K 个高频元素
+ * 给定一个非空的整数数组，返回其中出现频率前 k 高的元素。
+ *  https://leetcode-cn.com/problems/top-k-frequent-elements/ 
+*/
 
 /**
  * @param {number[]} nums
@@ -36,3 +40,4 @@ var topKFrequent = function(nums, k) {
   }
   return arr.sort((a,b) => compare(obj[a], obj[b])).splice(0, k);
 };
+console.log(topKFrequent([1,1,1,2,2,3], 2));

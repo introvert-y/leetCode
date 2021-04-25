@@ -17,39 +17,39 @@
   检查栈是否空。只有栈空，整个字符串才匹配完。
 */
 
-// var isValid = function (s) {
-//   const arr = [];
-//   for (let i = 0; i <= s.length - 1; i++) {
-//     const str = s.charAt(i);
-//     switch (str) {
-//       case "(":
-//       case "[":
-//       case "{": {
-//         arr.push(str);
-//         break;
-//       }
-//       case ")":
-//       case "]":
-//       case "}": {
-//         if (!arr.length) {
-//           return false;
-//         }
-//         const topElement = arr.pop();
-//         if (
-//           !(
-//             (topElement === "(" && str === ")") ||
-//             (topElement === "[" && str === "]") ||
-//             (topElement === "{" && str === "}")
-//           )
-//         ) {
-//           return false;
-//         }
-//         break;
-//       }
-//     }
-//   }
-//   return !arr.length;
-// };
+var isValid = function (s) {
+  const arr = [];
+  for (let i = 0; i <= s.length - 1; i++) {
+    const str = s.charAt(i);
+    switch (str) {
+      case "(":
+      case "[":
+      case "{": {
+        arr.push(str);
+        break;
+      }
+      case ")":
+      case "]":
+      case "}": {
+        if (!arr.length) {
+          return false;
+        }
+        const topElement = arr.pop();
+        if (
+          !(
+            (topElement === "(" && str === ")") ||
+            (topElement === "[" && str === "]") ||
+            (topElement === "{" && str === "}")
+          )
+        ) {
+          return false;
+        }
+        break;
+      }
+    }
+  }
+  return !arr.length;
+};
 
 // es6 Map映射
 
@@ -64,7 +64,8 @@ var isValid = function (s) {
     ["}", "{"],
   ]);
   const stk = [];
-  s.split("").forEach((ch) => {
+  for (let i = 0; i <= n - 1; i++) {
+    const ch = s.charAt(i);
     if (!pairs.has(ch)) {
       stk.push(ch);
     } else {
@@ -73,9 +74,10 @@ var isValid = function (s) {
       }
       stk.pop();
     }
-  });
+  }
   return !stk.length;
 };
 
-console.log(isValid("()[ ]"));
+console.log(isValid("()"));
+// console.log(isValid("([}}])"));
 

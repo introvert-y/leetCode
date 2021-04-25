@@ -42,7 +42,7 @@ MinStack.prototype.getMin = function () {
 // 方法二，当入栈比之前更小值的时候，先把之前的最小值入栈
 // function MinStack() {
 //   this.list = [];
-//   this.minVal = Infinity;
+//   this.minVal = '';
 // }
 // MinStack.prototype.push = function (element) {
 //   if (!this.list.length) {
