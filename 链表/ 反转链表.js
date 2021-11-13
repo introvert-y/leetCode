@@ -1,6 +1,7 @@
 /**
  * url: https://www.nowcoder.com/practice/75e878df47f24fdc9dc3e400ec6058ca?tpId=13&tqId=23286&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking
  * finish date: 2021.11.9
+ * 难度： 简单
  * */ 
 
 /*function ListNode(x){
