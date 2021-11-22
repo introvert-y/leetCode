@@ -17,10 +17,9 @@
       pb[i] = Array.from({
           length: len
       });
-  }
-   for (let i = 0; i < len ; i++) {
       pb[i][i] = true;
-  } 
+
+  }
   for (let j = 1; j <= len - 1; j++){
       for (let i = 0; i < j; i++) {
           if (s[i] !== s[j]) {
