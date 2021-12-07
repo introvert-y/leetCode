@@ -32,24 +32,26 @@ var numDecodings = function (s) {
  * @param {string} s
  * @return {number}
  */
- var numDecodings = function(s) {
+var numDecodings = function (s) {
   const len = s.length;
   // a = f[i - 2]
   // b = f[i - 1]
   // c = f[i]
-  let a = 0, b = 1, c = 0;
+  let a = 0,
+    b = 1,
+    c = 0;
   for (let i = 1; i <= len; i++) {
-      c = 0;
-      if (s[i - 1] != 0) {
-          c += b;
-      }
-      if (i > 1 && s[i - 2] !=0 && (s[i - 2] - 0) * 10 + (s[i - 1] - 0) <= 26) {
-          c += a;
-      }
-      a = b;
-      b = c;
+    c = 0;
+    if (s[i - 1] != 0) {
+      c += b;
+    }
+    if (i > 1 && s[i - 2] != 0 && (s[i - 2] - 0) * 10 + (s[i - 1] - 0) <= 26) {
+      c += a;
+    }
+    a = b;
+    b = c;
   }
-  return c
+  return c;
 };
 
 /**
@@ -58,22 +60,22 @@ var numDecodings = function (s) {
  */
 
 // 类似正则的思路来做动态规划
- var numDecodings = function(s) {
+var numDecodings = function (s) {
   const len = s.length;
   let pre = 1;
   let current = 1;
   for (let i = 0; i <= len - 1; i++) {
-      let tmp = current;
-      if (s[i] == 0) {
-          if (s[i - 1] == 1 || s[i - 1] == 2) {
-             current = pre;
-          } else {
-              return 0;
-          }
-      } else if (s[i - 1] == 1 || ((s[i - 1] == 2) && (s[i] >= 1 && s[i] <= 6))) {
-          current += pre;
+    let tmp = current;
+    if (s[i] == 0) {
+      if (s[i - 1] == 1 || s[i - 1] == 2) {
+        current = pre;
+      } else {
+        return 0;
       }
-      pre = tmp;
+    } else if (s[i - 1] == 1 || (s[i - 1] == 2 && s[i] >= 1 && s[i] <= 6)) {
+      current += pre;
+    }
+    pre = tmp;
   }
   return current;
 };
